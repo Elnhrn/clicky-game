@@ -1,0 +1,8 @@
+body {
+    background-image: url("./images/background.jpg");
+    background-repeat: repeat;
+    background-position: center;
+    background-size: 10%;
+    background-attachment: fixed;
+    font-family: 'Quicksand', sans-serif;
+}

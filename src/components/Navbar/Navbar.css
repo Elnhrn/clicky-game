@@ -1,0 +1,22 @@
+.navbar h5 {
+    margin-bottom: 0 !important;
+}
+
+.navbar {
+    background-color: #013243 !important;
+    color: white;
+}
+
+.navbar a {
+    color: white !important;
+    font-weight: bolder;
+    letter-spacing: 1px;
+}
+
+.navbar-msg {
+
+}
+
+.navbar-score {
+    float: right;
+}

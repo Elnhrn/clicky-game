@@ -1,0 +1,15 @@
+.jumbotron {
+    margin-top: 55px;
+    text-align: center;
+    color: black;
+    background: none;
+}
+
+.jumbotron .display-4 {
+    font-size: 2.7rem;
+}
+
+.lead {
+    width: 80%;
+    margin: 0 auto;
+}
