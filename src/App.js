@@ -75,7 +75,11 @@ class App extends Component {
         });
 
         if (this.state.modalMsg === "You clicked on all the images!! You win!") {
-
+            this.setState({
+                selectedArr: [],
+                score: 0,
+                topScore: 0
+            });
         }
     };
 
