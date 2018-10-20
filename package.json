@@ -2,7 +2,7 @@
   "name": "clicky-game",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://luflicesh.github.io/",
+  "homepage": "https://luflicesh.github.io/clicky-game/",
   "dependencies": {
     "gh-pages": "^2.0.1",
     "react": "^16.5.2",
