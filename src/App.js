@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import AnimalCard from "./components/AnimalCard/AnimalCard.js";
 import Jumbotron from "./components/Jumbotron/Jumbotron.js";
 import Navbar from "./components/Navbar/Navbar.js";
-import Modal from "./components/Modal.js";
+import Modal from "./components/Modal/Modal.js";
 import animals from "./animals.json";
 
 class App extends Component {
@@ -12,35 +12,37 @@ class App extends Component {
         selectedArr: [],
         score: 0,
         topScore: 0,
-        msg: ""
+        modal: false,
+        modalMsg: ""
     };
 
     selectAnimal = id => {
 
         // randomize animals array to start
-        this.setState({ animals: this.shuffle(this.state.animals)});
+        this.setState({ animals: this.shuffle(this.state.animals) });
 
         // if the user clicks on an image for the first time, push that id to the selectedArr and officially set the state for selectedArr
         if (this.state.selectedArr.indexOf(id) === -1) {
-            
+
             console.log(true);
             console.log("id: " + id);
 
             this.state.selectedArr.push(id);
-            
+
             console.log("array: " + this.state.selectedArr);
 
             this.setState({
                 selectedArr: this.state.selectedArr,
-                msg: "Great choice!",
                 score: this.state.score + 1
             });
         } else {
             console.log(false);
+
             this.setState({
                 score: 0,
                 selectedArr: [],
-                msg: "Oh, no! You lost! Start over.",
+                modal: true,
+                modalMsg: "Game over! Click OK to try and beat your top score."
             });
 
             if (this.state.score > this.state.topScore) {
@@ -48,9 +50,13 @@ class App extends Component {
                     topScore: this.state.score
                 });
             }
+        }
 
-            // TODO: show alert that user lost
-            
+        if (this.state.selectedArr.length === this.state.animals.length) {
+            this.setState({
+                modal: true,
+                modalMsg: "You clicked on all the images!! You win!"
+            });
         }
     };
 
@@ -62,27 +68,39 @@ class App extends Component {
         }
         return a;
     };
+    
+    closeModal = () => {
+        this.setState({
+            modal: false
+        });
+
+        if (this.state.modalMsg === "You clicked on all the images!! You win!") {
+
+        }
+    };
 
     // Map over this.state.animals and render a AnimalCard component for each animal object
     render() {
         return (
             <div>
-                <Navbar 
+                <Navbar
                     msg={this.state.msg}
                     score={this.state.score}
                     topScore={this.state.topScore}
                 />
                 <Jumbotron />
-                
+
                 {this.state.animals.map(animal => (
                     <AnimalCard
-                    selectAnimal={this.selectAnimal}
-                    id={animal.id}
-                    name={animal.name}
-                    image={animal.image}
-                    key={animal.id}
+                        selectAnimal={this.selectAnimal}
+                        id={animal.id}
+                        name={animal.name}
+                        image={animal.image}
+                        key={animal.id}
                     />
                 ))}
+
+                <Modal modal={this.state.modal} closeModal={this.closeModal} modalMsg={this.state.modalMsg}/>
 
             </div>
         );

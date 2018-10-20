@@ -1,0 +1,8 @@
+.modal {
+    margin-top: 100px;
+    overflow: visible !important;
+}
+
+.modal-title {
+    float: left;
+}
