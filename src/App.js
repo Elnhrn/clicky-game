@@ -104,7 +104,11 @@ class App extends Component {
                     />
                 ))}
 
-                <Modal modal={this.state.modal} closeModal={this.closeModal} modalMsg={this.state.modalMsg}/>
+                <Modal
+                    modal={this.state.modal} 
+                    closeModal={this.closeModal} 
+                    modalMsg={this.state.modalMsg}
+                />
 
             </div>
         );
